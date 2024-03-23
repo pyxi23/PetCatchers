@@ -132,8 +132,9 @@
     function calculate() {
       var eggCount = parseInt(document.getElementById("eggCount").value);
       var eggAmount = parseInt(document.getElementById("eggAmount").value);
+      var eggSpeed = parseFloat(document.getElementById("eggSpeed").value);
 
-      var hatchTimeSeconds = (eggAmount / eggCount) * (4 + 31 / 1000);
+      var hatchTimeSeconds = (eggAmount / eggCount) * (4 + 31 / 1000) / eggSpeed;
       var result = "Result: " + hatchTimeSeconds.toFixed(2) + " seconds";
 
       document.getElementById("result").innerHTML = result;
@@ -162,6 +163,10 @@
       var result = days + " day(s), " + remainingHours + " hour(s), " + remainingMinutes + " minute(s), and " + remainingSeconds.toFixed(2) + " second(s)";
       document.getElementById("timeResult").innerHTML = "Result: " + result;
     }
+    
+    function redirectToLink() {
+      window.location.href = "https://shattereddisk.github.io/rickroll/rickroll.mp4";
+    }
   </script>
 </head>
 <body>
@@ -174,6 +179,7 @@
       <option value="2">2 eggs</option>
       <option value="3">3 eggs</option>
       <option value="4">4 eggs</option>
+      <option value="5">5 eggs</option>
       <option value="optional">custom</option>
     </select><br>
 
@@ -185,12 +191,20 @@
     <label for="eggAmount">amount of eggs in your inventory:</label>
     <input type="number" id="eggAmount"><br>
 
+    <label for="eggSpeed">egg hatching speed:</label>
+    <select id="eggSpeed">
+      <option value="1">default (no egg speed)</option>
+      <option value="1.05">Egg Speed i</option>
+      <option value="1.2">Egg Speed ii</option>
+      <option value="1.45">Egg Speed iii</option>
+    </select><br>
+
     <button onclick="calculate()">calculate time</button>
 
     <p id="result"></p>
 
     <div class="extra-text">
-      <label for="additionalNotes">Here's a quick tutorial on how to use this: The 'eggs you hatch at once' represents the number of eggs you hatch per input. The options 1, 2, 3, and 4 are available, but if none of these fit your needs, you can choose custom. For the 'amount of eggs' input, simply enter the total number of eggs you have. Thank you for using this tool!</label>
+      <label for="additionalNotes">Here's a quick tutorial on how to use this: The 'eggs you hatch at once' represents the number of eggs you hatch per input. The options 1, 2, 3, 4, and 5 are available, but if none of these fit your needs, you can choose custom. For the 'amount of eggs' input, simply enter the total number of eggs you have. Thank you for using this tool!</label>
     </div>
 
     <div class="time-converter">
@@ -209,10 +223,6 @@
     </div>
   </div>
 
-  <script>
-    function redirectToLink() {
-      window.location.href = "https://shattereddisk.github.io/rickroll/rickroll.mp4";
-    }
-  </script>
 </body>
 </html>
+
